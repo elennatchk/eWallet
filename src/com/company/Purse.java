@@ -7,7 +7,6 @@ public class Purse {
     int capacity;
     Coin[] coins;
 
-
     public Purse(int capacity) {
         this.capacity = capacity;
         this.coins = new Coin[0];
@@ -77,15 +76,17 @@ public class Purse {
     }
 
     public Coin[] withdraw(double amount, String currency) {
-        if (amount > Balance()) {
-            System.out.println("null");
-            return null;
-        }
-        if (amount <= 0) {
-            return null;
-        }
+        Coin [] array = new Coin[ coins.length  ];
+        for (int i = 0, k = 0; i < coins.length; i++) {
+            if (Balance()-amount==0){
 
-        return new Coin[0];
+            }
+            if (amount == coins[i].getValue() && currency.equals(coins[i].getCurrency())) {
+                array[k++] = coins[i];
+                this.coins = Arrays.copyOf(coins, coins.length - 1);
+                System.out.println(coins[i]);
+            }
+        } return array;
     }
 
 
