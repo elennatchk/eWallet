@@ -9,76 +9,85 @@ public class Purse {
 
 
     public Purse(int capacity) {
-        this.coins = new Coin[capacity];
         this.capacity = capacity;
+        this.coins = new Coin[0];
+
 
     }
 
     public int count() {
-        int sum = 0;
-        for (int i = 0; i < coins.length; i++) {
-            System.out.println(this.coins.length - 1);
-            break;
-        }
+        System.out.println(this.coins.length + " Coin in Purse");
         return 0;
     }
 
     public int getBalance(String currency) {
         int i = 0;
-        for (int x = 0; x < coins.length; x++) {
-            if (coins[x].getCurrency() == currency) {
-                i += this.coins[x].getValue();
-                return i++;
 
-            } else {
-                System.out.println("WTF");
+        for (int x = 0; x < coins.length; x++) {
+
+            if (coins[x].getCurrency().equals(currency)) {
+                i += this.coins[x].getValue();
+
             }
         }
-        return 0;
+        System.out.println(i);
+        return i;
     }
+
+    public double Balance() {
+        double returnValue = 0.0;
+        for (Coin c : coins) {
+            returnValue += c.getValue();
+        }
+        return returnValue;
+    }
+
 
     @Override
     public String toString() {
-
         for (int x = 0; x < coins.length; x++) {
             System.out.println(this.coins[x].toString());
         }
         return null;
     }
 
+
     public int getCapacity() {
+        System.out.println(capacity);
         return capacity;
     }
 
     public boolean isFull() {
-
-        if (this.coins.length==capacity){
-            System.out.println("full");
-        }if (this.coins.length < capacity){
-            System.out.println("not full");
-        }
-
-        return false;
+        System.out.println(coins.length == capacity);
+        return coins.length == capacity;
     }
 
     public boolean insert(Coin coin) {
-        if (coin.getValue() > 0) {
+        if (coin.getValue() > 0 && coins.length < capacity) {
             this.coins = Arrays.copyOf(coins, coins.length + 1);
             this.coins[this.coins.length - 1] = coin;
+            Arrays.sort(coins);
             System.out.println("true");
             return true;
         } else if (this.coins.length == capacity || coin.getValue() <= 0) {
-            System.out.println("Can't insert coin, Value Must be more than 0.");
-            System.out.println("false");
+            System.out.println("False,  " + "Can't insert coin");
             return false;
         }
         return false;
     }
 
-
     public Coin[] withdraw(double amount, String currency) {
+        if (amount > Balance()) {
+            System.out.println("null");
+            return null;
+        }
+        if (amount <= 0) {
+            return null;
+        }
 
         return new Coin[0];
     }
+
+
 }
 

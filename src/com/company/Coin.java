@@ -1,9 +1,9 @@
 package com.company;
 
-public class Coin implements Comparable {
+public class Coin implements Comparable  {
 
-    private double value;
-    private String currency;
+    private final double value;
+    private final String currency;
 
     public Coin(double value, String currency) {
         this.value = value;
@@ -35,6 +35,7 @@ public class Coin implements Comparable {
 
     @Override
     public String toString() {
+
         return "Coin { " +
                 "value -> " + value +
                 ", currency -> '" + currency + '\'' +
