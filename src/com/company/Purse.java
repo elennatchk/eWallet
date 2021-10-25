@@ -75,17 +75,18 @@ public class Purse {
         return false;
     }
 
-   public Coin[] withdraw(double amount, String currency) {
+  public Coin[] withdraw(double amount, String currency) {
         ArrayList<Coin> list = new ArrayList<>();
         for (Coin coin : coins) {
             if (coin.getCurrency().equals(currency)) {
-                while (amount == coin.getValue()) {
+                if (amount == coin.getValue()) {
                     amount = amount - coin.getValue();
                     list.add(coin);
                     System.out.println(list);
+                } else if (Balance(currency) - amount == 0) {
+                    list.add(coin);
+                    System.out.println(coin);
                 }
-
-
             }
         }
         return list.toArray(Coin[]::new);
