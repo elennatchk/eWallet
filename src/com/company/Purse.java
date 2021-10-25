@@ -33,12 +33,17 @@ public class Purse {
         return i;
     }
 
-    public double Balance() {
-        double returnValue = 0.0;
-        for (Coin c : coins) {
-            returnValue += c.getValue();
+    public double Balance(String currency) {
+        int i = 0;
+
+        for (int x = 0; x < coins.length; x++) {
+
+            if (coins[x].getCurrency().equals(currency)) {
+                i += this.coins[x].getValue();
+
+            }
         }
-        return returnValue;
+        return i;
     }
 
 
