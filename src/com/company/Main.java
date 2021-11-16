@@ -15,11 +15,11 @@ public class Main {
         purse.insert(new Coin(7, "USD"));
         purse.insert(new Coin(5, "USD"));
         purse.insert(new Coin(3, "GEL"));
-//        purse.insert(new Coin(8, "USD"));
-//        purse.getBalance("USD");
-//        purse.count();
-//        purse.isFull();
-//        purse.toString();
+       purse.insert(new Coin(8, "USD"));
+       purse.getBalance("USD");
+       purse.count();
+       purse.isFull();
+       purse.toString();
         purse.withdraw(5,"USD");
         purse.isFull();
         purse.toString();
